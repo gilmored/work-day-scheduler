@@ -6,8 +6,7 @@ function getTime() {
   colorizeTime();
   setInterval(colorizeTime, 60000);
 
-
-
+$(".saveBtn").on("click", save);
 
 function colorizeTime() {
     // for each time block
@@ -26,6 +25,11 @@ function colorizeTime() {
       }
     });
   };
+
+  function save(event) {
+    var hourId = $(this).parent().attr("id");
+    localStorage.setItem(moment().format("DDDYYYY") + hourId, $("#" + hourId + " textarea").val());
+  }
 
 getTime();
 
